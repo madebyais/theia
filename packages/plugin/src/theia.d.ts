@@ -9662,7 +9662,10 @@ export module '@theia/plugin' {
          * @param token A cancellation token.
          * @return An array of {@link DebugConfiguration debug configurations}.
          */
-        provideDebugConfigurations?(folder: WorkspaceFolder | undefined, token?: CancellationToken): ProviderResult<DebugConfiguration[]>;
+        provideDebugConfigurations?(
+            folder: WorkspaceFolder | undefined,
+            token?: CancellationToken
+        ): ProviderResult<DebugConfiguration[]>;
 
         /**
          * Resolves a [debug configuration](#DebugConfiguration) by filling in missing values or by adding/changing/removing attributes.
@@ -9676,7 +9679,11 @@ export module '@theia/plugin' {
          * @param token A cancellation token.
          * @return The resolved debug configuration or undefined or null.
          */
-        resolveDebugConfiguration?(folder: WorkspaceFolder | undefined, debugConfiguration: DebugConfiguration, token?: CancellationToken): ProviderResult<DebugConfiguration>;
+        resolveDebugConfiguration?(
+            folder: WorkspaceFolder | undefined,
+            debugConfiguration: DebugConfiguration,
+            token?: CancellationToken
+        ): ProviderResult<DebugConfiguration | undefined | null>;
 
         /**
          * This hook is directly called after 'resolveDebugConfiguration' but with all variables substituted.
@@ -9691,7 +9698,11 @@ export module '@theia/plugin' {
          * @param token A cancellation token.
          * @return The resolved debug configuration or undefined or null.
          */
-        resolveDebugConfigurationWithSubstitutedVariables?(folder: WorkspaceFolder | undefined, debugConfiguration: DebugConfiguration, token?: CancellationToken): ProviderResult<DebugConfiguration>;
+        resolveDebugConfigurationWithSubstitutedVariables?(
+            folder: WorkspaceFolder | undefined,
+            debugConfiguration: DebugConfiguration,
+            token?: CancellationToken
+        ): ProviderResult<DebugConfiguration | undefined | null>;
     }
 
     /**

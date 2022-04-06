@@ -346,12 +346,20 @@ export class DebugExtImpl implements DebugExt {
         return { provider, type };
     }
 
-    async $provideDebugConfigurationsByHandle(handle: number, workspaceFolderUri: string | undefined): Promise<theia.DebugConfiguration[]> {
+    async $provideDebugConfigurationsByHandle(
+        handle: number,
+        workspaceFolderUri: string | undefined
+    ): Promise<theia.DebugConfiguration[]> {
         const { provider, type } = this.getConfigurationProviderRecord(handle);
 
-        const configurations = await provider.provideDebugConfigurations?.(this.toWorkspaceFolder(workspaceFolderUri));
+        const configurations = await provider.provideDebugConfigurations?.(
+            this.toWorkspaceFolder(workspaceFolderUri)
+        );
+
         if (!configurations) {
-            throw new Error('nothing returned from DebugConfigurationProvider.provideDebugConfigurations, type: ' + type);
+            throw new Error(
+                'nothing returned from DebugConfigurationProvider.provideDebugConfigurations, type: ' + type
+            );
         }
 
         return configurations;
@@ -361,20 +369,24 @@ export class DebugExtImpl implements DebugExt {
         handle: number,
         workspaceFolderUri: string | undefined,
         debugConfiguration: theia.DebugConfiguration
-    ): Promise<theia.DebugConfiguration | undefined> {
-
+    ): Promise<theia.DebugConfiguration | undefined | null> {
         const { provider } = this.getConfigurationProviderRecord(handle);
-        return provider.resolveDebugConfiguration?.(this.toWorkspaceFolder(workspaceFolderUri), debugConfiguration);
+        return provider.resolveDebugConfiguration?.(
+            this.toWorkspaceFolder(workspaceFolderUri),
+            debugConfiguration
+        );
     }
 
     async $resolveDebugConfigurationWithSubstitutedVariablesByHandle(
         handle: number,
         workspaceFolderUri: string | undefined,
         debugConfiguration: theia.DebugConfiguration
-    ): Promise<theia.DebugConfiguration | undefined> {
-
+    ): Promise<theia.DebugConfiguration | undefined | null> {
         const { provider } = this.getConfigurationProviderRecord(handle);
-        return provider.resolveDebugConfigurationWithSubstitutedVariables?.(this.toWorkspaceFolder(workspaceFolderUri), debugConfiguration);
+        return provider.resolveDebugConfigurationWithSubstitutedVariables?.(
+            this.toWorkspaceFolder(workspaceFolderUri),
+            debugConfiguration
+        );
     }
 
     async $provideDebugConfigurations(debugType: string, workspaceFolderUri: string | undefined, dynamic: boolean = false): Promise<theia.DebugConfiguration[]> {
@@ -394,6 +406,9 @@ export class DebugExtImpl implements DebugExt {
         return result;
     }
 
+    /**
+     * @deprecated since 1.25.0. Use $registerDebugConfigurationProvider with $resolveDebugConfigurationByHandle instead.
+     */
     async $resolveDebugConfigurations(debugConfiguration: theia.DebugConfiguration, workspaceFolderUri: string | undefined): Promise<theia.DebugConfiguration | undefined> {
         let current = debugConfiguration;
 
@@ -419,6 +434,9 @@ export class DebugExtImpl implements DebugExt {
         return current;
     }
 
+    /**
+     * @deprecated since 1.25.0. Use $registerDebugConfigurationProvider with $resolveDebugConfigurationWithSubstitutedVariablesByHandle instead.
+     */
     async $resolveDebugConfigurationWithSubstitutedVariables(debugConfiguration: theia.DebugConfiguration, workspaceFolderUri: string | undefined):
         Promise<theia.DebugConfiguration | undefined> {
         let current = debugConfiguration;

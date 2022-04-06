@@ -12,7 +12,33 @@
 - [plugin] added support for `SnippetString.appendChoice` [#10969](https://github.com/eclipse-theia/theia/pull/10969) - Contributed on behalf of STMicroelectronics
 
 <a name="breaking_changes_1.25.0">[Breaking Changes:](#breaking_changes_1.25.0)</a>
-
+- [debug] 
+The following methods may now return `undefined | null` ([#10999](https://github.com/eclipse-theia/theia/pull/10999)):
+  - DebugSessionManager
+    - resolveConfiguration
+    - resolveDebugConfiguration
+    - resolveDebugConfigurationWithSubstitutedVariables
+  - DebugService
+    - resolveDebugConfiguration
+    - resolveDebugConfigurationWithSubstitutedVariables
+  - theia.d.ts DebugConfigurationProvider
+    - resolveDebugConfiguration
+    - resolveDebugConfigurationWithSubstitutedVariables
+  - plugin-api-rpc.ts DebugConfigurationProvider
+    - resolveDebugConfiguration
+    - resolveDebugConfigurationWithSubstitutedVariables
+  - DebugExt
+    - $resolveDebugConfigurationByHandle
+    - $resolveDebugConfigurationWithSubstitutedVariablesByHandle
+  - DebugExtImpl
+    - $resolveDebugConfigurationByHandle
+    - $resolveDebugConfigurationWithSubstitutedVariablesByHandle
+  - PluginDebugConfigurationProvider
+    - resolveDebugConfiguration
+    - resolveDebugConfigurationWithSubstitutedVariables
+  - PluginDebugService
+    - resolveDebugConfiguration
+    - resolveDebugConfigurationWithSubstitutedVariables
 
 ## v1.24.0 - 3/31/2022
 

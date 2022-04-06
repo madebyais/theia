@@ -1656,8 +1656,14 @@ export interface DebugConfigurationProvider {
     readonly type: string;
     readonly triggerKind: DebugConfigurationProviderTriggerKind;
     provideDebugConfigurations?(folder: string | undefined): Promise<theia.DebugConfiguration[]>;
-    resolveDebugConfiguration?(folder: string | undefined, debugConfiguration: theia.DebugConfiguration): Promise<theia.DebugConfiguration | undefined>;
-    resolveDebugConfigurationWithSubstitutedVariables?(folder: string | undefined, debugConfiguration: theia.DebugConfiguration): Promise<theia.DebugConfiguration | undefined>;
+    resolveDebugConfiguration?(
+        folder: string | undefined,
+        debugConfiguration: theia.DebugConfiguration
+    ): Promise<theia.DebugConfiguration | undefined | null>;
+    resolveDebugConfigurationWithSubstitutedVariables?(
+        folder: string | undefined,
+        debugConfiguration: theia.DebugConfiguration
+    ): Promise<theia.DebugConfiguration | undefined | null>;
 }
 
 export interface DebugConfigurationProviderDescriptor {
@@ -1692,8 +1698,16 @@ export interface DebugExt {
         Promise<theia.DebugConfiguration | undefined>;
 
     $provideDebugConfigurationsByHandle(handle: number, workspaceFolder: string | undefined): Promise<theia.DebugConfiguration[]>;
-    $resolveDebugConfigurationByHandle(handle: number, workspaceFolder: string | undefined, debugConfiguration: theia.DebugConfiguration): Promise<theia.DebugConfiguration | undefined>;
-    $resolveDebugConfigurationWithSubstitutedVariablesByHandle(handle: number, workspaceFolder: string | undefined, debugConfiguration: theia.DebugConfiguration): Promise<theia.DebugConfiguration | undefined>;
+    $resolveDebugConfigurationByHandle(
+        handle: number,
+        workspaceFolder: string | undefined,
+        debugConfiguration: theia.DebugConfiguration
+    ): Promise<theia.DebugConfiguration | undefined | null>;
+    $resolveDebugConfigurationWithSubstitutedVariablesByHandle(
+        handle: number,
+        workspaceFolder: string | undefined,
+        debugConfiguration: theia.DebugConfiguration
+    ): Promise<theia.DebugConfiguration | undefined | null>;
 
     $createDebugSession(debugConfiguration: theia.DebugConfiguration): Promise<string>;
     $terminateDebugSession(sessionId: string): Promise<void>;
