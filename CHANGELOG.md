@@ -21,9 +21,8 @@ The following methods may now return `undefined | null` ([#10999](https://github
   - DebugService
     - resolveDebugConfiguration
     - resolveDebugConfigurationWithSubstitutedVariables
-  - theia.d.ts DebugConfigurationProvider
-    - resolveDebugConfiguration
-    - resolveDebugConfigurationWithSubstitutedVariables
+  - theia.d.ts ProviderResult
+      it's now aligned to vscode and can return `null`
   - plugin-api-rpc.ts DebugConfigurationProvider
     - resolveDebugConfiguration
     - resolveDebugConfigurationWithSubstitutedVariables

@@ -279,11 +279,11 @@ export class WorkspaceExtImpl implements WorkspaceExt {
     async $provideTextDocumentContent(documentURI: string): Promise<string | undefined> {
         const uri = URI.parse(documentURI);
         const provider = this.documentContentProviders.get(uri.scheme);
-        if (provider) {
-            return provider.provideTextDocumentContent(uri, CancellationToken.None);
+        if (!provider) {
+            return undefined;
         }
-
-        return undefined;
+        const response = await provider.provideTextDocumentContent(uri, CancellationToken.None);
+        return response ? response : undefined;
     }
 
     getWorkspaceFolder(uri: theia.Uri, resolveParent?: boolean): theia.WorkspaceFolder | undefined {

@@ -406,9 +406,6 @@ export class DebugExtImpl implements DebugExt {
         return result;
     }
 
-    /**
-     * @deprecated since 1.25.0. Use $registerDebugConfigurationProvider with $resolveDebugConfigurationByHandle instead.
-     */
     async $resolveDebugConfigurations(debugConfiguration: theia.DebugConfiguration, workspaceFolderUri: string | undefined): Promise<theia.DebugConfiguration | undefined> {
         let current = debugConfiguration;
 
@@ -434,9 +431,6 @@ export class DebugExtImpl implements DebugExt {
         return current;
     }
 
-    /**
-     * @deprecated since 1.25.0. Use $registerDebugConfigurationProvider with $resolveDebugConfigurationWithSubstitutedVariablesByHandle instead.
-     */
     async $resolveDebugConfigurationWithSubstitutedVariables(debugConfiguration: theia.DebugConfiguration, workspaceFolderUri: string | undefined):
         Promise<theia.DebugConfiguration | undefined> {
         let current = debugConfiguration;
