@@ -51,6 +51,7 @@
     "yargs": "^15.3.1"
   },
   "scripts": {
+    "theia-browser": "yarn -s --cwd examples/browser start",
     "all": "yarn -s install && yarn -s lint && yarn -s build",
     "browser": "yarn -s --cwd examples/browser",
     "build": "yarn -s compile && yarn -s build:examples",

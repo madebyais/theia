@@ -76,6 +76,10 @@ $ yarn browser build
 
 # Start browser version
 $ yarn browser start
+
+# If you want to run it using PM2
+$ npm i -g pm2
+$ pm2 start "yarn theia-browser" --name theia
 ```
 
 ## Contributing
