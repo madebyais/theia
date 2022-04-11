@@ -61,6 +61,23 @@ Here you can find guides and examples for common scenarios:
 - [Test a VS Code extension in Theia](https://github.com/eclipse-theia/theia/wiki/Testing-VS-Code-extensions)
 - [Package a desktop Theia application with Electron](https://github.com/theia-ide/yangster-electron)
 
+If you are planning to run theia on server, please find below steps.
+Currently, I've only tested the setup using `ubuntu 20.04`
+
+```
+# Install required packages
+$ sudo apt-get install -y g++ gcc make python2.7 pkg-config libx11-dev libxkbfile-dev libsecret-1-dev pkg-config
+
+# Install deps
+$ yarn install
+
+# Build browser version
+$ yarn browser build
+
+# Start browser version
+$ yarn browser start
+```
+
 ## Contributing
 
 Read below to learn how to take part in improving Theia:
